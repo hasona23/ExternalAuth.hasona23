@@ -51,7 +51,33 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/Home/";
 });
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.ClientId = config["Authentication:Google:ClientId"];
+        options.ClientSecret = config["Authentication:Google:ClientSecret"];
+    })
+    .AddMicrosoftAccount(options =>
+    {
+        options.ClientId = config["Authentication:Microsoft:ClientId"];
+        options.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+    })
+    .AddFacebook(options =>
+    {
+        options.ClientId = config["Authentication:Facebook:ClientId"];
+        options.ClientSecret = config["Authentication:Facebook:ClientSecret"];
+    })
+    .AddTwitter(options =>
+    {
 
+        options.ConsumerKey = config["Authentication:Twitter:ConsumerApiKey"];
+        options.ConsumerSecret = config["Authentication:Twitter:ConsumerSecret"];
+    })
+    .AddGitHub(options =>
+    {
+        options.ClientId = config["Authentication:Github:ClientId"];
+        options.ClientSecret = config["Authentication:Github:ClientSecret"];
+    });
 
 var app = builder.Build();
 

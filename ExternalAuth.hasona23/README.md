@@ -53,6 +53,8 @@ email : customer{any number from 1 to 20}@example.com
 ex: customer12@example.com
 password: Customer123!
 ```
+
+- For External Login services aren't configured (Removed keys and secrets) but the functions itself are setup so please add them if intend to use
 ## Lessons Learned
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
