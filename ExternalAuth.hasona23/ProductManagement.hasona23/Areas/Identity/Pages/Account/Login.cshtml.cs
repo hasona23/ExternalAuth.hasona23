@@ -16,7 +16,7 @@ namespace ProductManagement.hasona23.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -134,6 +134,11 @@ namespace ProductManagement.hasona23.Areas.Identity.Pages.Account
                         ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                         return Page();
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "User not found. Please check your email or register a new account.");
+                    return Page();
                 }
             }
 
